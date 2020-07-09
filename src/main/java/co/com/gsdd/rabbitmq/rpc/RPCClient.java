@@ -1,6 +1,7 @@
 package co.com.gsdd.rabbitmq.rpc;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.TimeoutException;
@@ -34,7 +35,7 @@ public class RPCClient {
                 new RPCConsumerClient(manager.getChannel(), corrId, response));
 
         manager.getChannel().basicPublish("", RabbitConstants.RPC_SEND_QUEUE, props,
-                message.getBytes(RabbitConstants.UTF_8));
+                message.getBytes(StandardCharsets.UTF_8));
 
         return response.take();
     }

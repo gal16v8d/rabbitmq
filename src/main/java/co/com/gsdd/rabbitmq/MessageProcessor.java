@@ -1,6 +1,7 @@
 package co.com.gsdd.rabbitmq;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 import com.rabbitmq.client.AMQP.BasicProperties;
 import com.rabbitmq.client.Channel;
@@ -23,10 +24,10 @@ public class MessageProcessor extends DefaultConsumer {
     @Override
     public void handleDelivery(String consumerTag, Envelope envelop, BasicProperties basicProp, byte[] body)
             throws IOException {
-        String mensaje = "";
+        String message = "";
         try {
-            mensaje = new String(body, RabbitConstants.UTF_8);
-            log.info("[x] Message received '{}'", mensaje);
+            message = new String(body, StandardCharsets.UTF_8);
+            log.info("[x] Message received '{}'", message);
             Thread.sleep(RabbitConstants.WAIT_TIME);
         } catch (Exception e) {
             log.error(e.getMessage(), e);

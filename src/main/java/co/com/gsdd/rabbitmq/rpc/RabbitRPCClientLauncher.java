@@ -17,8 +17,11 @@ public class RabbitRPCClientLauncher {
                 response = sendMessages(String.valueOf(i), String.valueOf(i));
                 log.info(" [.] Got '{}'", response);
             }
-        } catch (IOException | TimeoutException | InterruptedException e) {
+        } catch (IOException | TimeoutException e) {
             log.error(e.getMessage(), e);
+        } catch (InterruptedException i) {
+            log.error(i.getMessage(), i);
+            Thread.currentThread().interrupt();
         }
     }
 

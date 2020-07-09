@@ -17,10 +17,10 @@ public class RabbitRPCServerLauncher {
             rm.getChannel().basicQos(1);
 
             log.info(" [x] Awaiting RPC requests");
-            RPCConsumerServer consumidor = new RPCConsumerServer(rm.getChannel());
-            rm.getChannel().basicConsume(RabbitConstants.RPC_SEND_QUEUE, consumidor);
+            RPCConsumerServer consumer = new RPCConsumerServer(rm.getChannel());
+            rm.getChannel().basicConsume(RabbitConstants.RPC_SEND_QUEUE, consumer);
             // Wait and be prepared to consume the message from RPC client.
-            waitMessages(consumidor);
+            waitMessages(consumer);
         } catch (IOException | TimeoutException e) {
             log.error(e.getMessage(), e);
         } finally {
@@ -30,13 +30,14 @@ public class RabbitRPCServerLauncher {
         }
     }
 
-    private static void waitMessages(RPCConsumerServer consumidor) {
+    private static void waitMessages(RPCConsumerServer consumer) {
         while (true) {
-            synchronized (consumidor) {
+            synchronized (consumer) {
                 try {
-                    consumidor.wait();
+                    consumer.wait();
                 } catch (InterruptedException e) {
                     log.error(e.getMessage(), e);
+                    Thread.currentThread().interrupt();
                 }
             }
         }

@@ -1,5 +1,6 @@
 package co.com.gsdd.rabbitmq.constants;
 
+import co.com.gsdd.docker.config.util.DockerEnvLoader;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
@@ -15,7 +16,7 @@ public final class RabbitConstants {
 
     public static final String EXCHANGE = "";
 
-    public static final String HOST = "192.168.99.100";
+    public static final String HOST = DockerEnvLoader.getDockerServiceIp();
     public static final String USER = "guest";
     public static final String PASS = USER;
     public static final int PORT = 5672;
@@ -24,7 +25,5 @@ public final class RabbitConstants {
     public static final int RECOVERY_CHECK = 60000;
 
     public static final int PACKAGES_TO_SEND = 200;
-
-    public static final String UTF_8 = "UTF-8";
 
 }

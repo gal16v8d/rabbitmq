@@ -1,13 +1,13 @@
 package co.com.gsdd.rabbitmq.rpc;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.DefaultConsumer;
 import com.rabbitmq.client.Envelope;
 
-import co.com.gsdd.rabbitmq.constants.RabbitConstants;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -29,7 +29,7 @@ public class RPCConsumerServer extends DefaultConsumer {
         String response = "";
 
         try {
-            String message = new String(body, RabbitConstants.UTF_8);
+            String message = new String(body, StandardCharsets.UTF_8);
             int n = Integer.parseInt(message);
 
             log.info(" [.] fib({})", message);
@@ -37,7 +37,7 @@ public class RPCConsumerServer extends DefaultConsumer {
         } catch (RuntimeException e) {
             log.error(" [.] {}", e);
         } finally {
-            channel.basicPublish("", properties.getReplyTo(), replyProps, response.getBytes(RabbitConstants.UTF_8));
+            channel.basicPublish("", properties.getReplyTo(), replyProps, response.getBytes(StandardCharsets.UTF_8));
             channel.basicAck(envelope.getDeliveryTag(), false);
             // RabbitMq consumer worker thread notifies the RPC
             // server owner thread
