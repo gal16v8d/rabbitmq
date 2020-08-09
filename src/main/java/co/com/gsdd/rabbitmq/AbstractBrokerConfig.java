@@ -30,7 +30,8 @@ public abstract class AbstractBrokerConfig {
 
     public abstract void receiveMessage() throws IOException;
 
-    public void createConnections(String host, DestinationType destinationType) throws IOException, TimeoutException {
+    public final void createConnections(String host, DestinationType destinationType)
+            throws IOException, TimeoutException {
         factory.setHost(host);
         factory.setUsername(RabbitConstants.USER);
         factory.setPassword(RabbitConstants.PASS);

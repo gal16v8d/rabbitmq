@@ -51,7 +51,7 @@
 		<rabbit.amqp.version>4.4.1</rabbit.amqp.version>
 		<commons.io.version>2.5</commons.io.version>
 		<commons.lang.version>2.6</commons.lang.version>
-		<docker-config-util.version>1.0.001</docker-config-util.version>
+		<docker-config-util.version>1.0.002</docker-config-util.version>
 	</properties>
 
 	<dependencies>
