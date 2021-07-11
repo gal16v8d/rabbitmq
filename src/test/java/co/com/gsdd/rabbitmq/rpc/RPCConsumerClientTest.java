@@ -16,7 +16,7 @@ import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Envelope;
 
 @ExtendWith(MockitoExtension.class)
-public class RPCConsumerClientTest {
+class RPCConsumerClientTest {
 
     private static final String EMPTY = "";
     private static final String TEST = "test";
@@ -31,12 +31,12 @@ public class RPCConsumerClientTest {
     private RPCConsumerClient client;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         client = new RPCConsumerClient(c, TEST, response);
     }
 
     @Test
-    public void handleDeliveryGoodCorrIdTest() throws IOException {
+    void handleDeliveryGoodCorrIdTest() throws IOException {
         AMQP.BasicProperties properties = new AMQP.BasicProperties.Builder().correlationId(TEST).build();
         byte[] body = MSG.getBytes();
         client.handleDelivery(EMPTY, e, properties, body);
@@ -44,7 +44,7 @@ public class RPCConsumerClientTest {
     }
 
     @Test
-    public void handleDeliveryBadCorrIdTest() throws IOException {
+    void handleDeliveryBadCorrIdTest() throws IOException {
         AMQP.BasicProperties properties = new AMQP.BasicProperties.Builder().correlationId("test2").build();
         byte[] body = MSG.getBytes();
         client.handleDelivery(EMPTY, e, properties, body);
