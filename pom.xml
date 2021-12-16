@@ -48,7 +48,7 @@
 		<!-- Logger api -->
 		<slf4j.version>1.7.32</slf4j.version>
 		<!-- Logger impl -->
-		<log4j.version>2.15.0</log4j.version>
+		<log4j.version>2.16.0</log4j.version>
 		<rabbit.amqp.version>4.4.1</rabbit.amqp.version>
 		<commons.io.version>2.5</commons.io.version>
 		<commons.lang.version>2.6</commons.lang.version>
@@ -236,6 +236,7 @@
 				<version>${mvn.format.plugin.version}</version>
 				<configuration>
 					<configFile>${project.basedir}/eclipse-java-google-style.xml</configFile>
+					<lineEnding>CRLF</lineEnding>
 				</configuration>
 				<executions>
 					<execution>
