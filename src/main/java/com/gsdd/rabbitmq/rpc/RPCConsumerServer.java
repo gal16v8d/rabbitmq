@@ -1,17 +1,19 @@
 package com.gsdd.rabbitmq.rpc;
 
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.DefaultConsumer;
 import com.rabbitmq.client.Envelope;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
+@Getter
 public class RPCConsumerServer extends DefaultConsumer {
 
-  protected Channel channel;
+  private Channel channel;
 
   public RPCConsumerServer(Channel channel) {
     super(channel);
@@ -19,8 +21,9 @@ public class RPCConsumerServer extends DefaultConsumer {
   }
 
   @Override
-  public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties,
-      byte[] body) throws IOException {
+  public void handleDelivery(
+      String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body)
+      throws IOException {
     AMQP.BasicProperties replyProps =
         new AMQP.BasicProperties.Builder().correlationId(properties.getCorrelationId()).build();
 
@@ -35,8 +38,8 @@ public class RPCConsumerServer extends DefaultConsumer {
     } catch (RuntimeException e) {
       log.error(" [.] {}", e);
     } finally {
-      channel.basicPublish("", properties.getReplyTo(), replyProps,
-          response.getBytes(StandardCharsets.UTF_8));
+      channel.basicPublish(
+          "", properties.getReplyTo(), replyProps, response.getBytes(StandardCharsets.UTF_8));
       channel.basicAck(envelope.getDeliveryTag(), false);
       // RabbitMq consumer worker thread notifies the RPC
       // server owner thread

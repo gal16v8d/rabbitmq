@@ -1,8 +1,8 @@
 package com.gsdd.rabbitmq.pointtopoint;
 
+import com.gsdd.rabbitmq.constants.RabbitConstants;
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
-import com.gsdd.rabbitmq.constants.RabbitConstants;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -23,5 +23,4 @@ public class SimulatorProducer {
       log.error("Error {}", e.getMessage(), e);
     }
   }
-
 }

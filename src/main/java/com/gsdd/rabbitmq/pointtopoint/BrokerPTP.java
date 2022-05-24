@@ -1,13 +1,13 @@
 package com.gsdd.rabbitmq.pointtopoint;
 
-import java.io.IOException;
-import java.util.concurrent.TimeoutException;
 import com.gsdd.rabbitmq.AbstractBrokerConfig;
 import com.gsdd.rabbitmq.DestinationType;
 import com.gsdd.rabbitmq.MessageProcessor;
 import com.gsdd.rabbitmq.constants.RabbitConstants;
+import java.io.IOException;
+import java.util.concurrent.TimeoutException;
 
-public class BrokerPTP extends AbstractBrokerConfig {
+public final class BrokerPTP extends AbstractBrokerConfig {
 
   private static BrokerPTP instance;
 

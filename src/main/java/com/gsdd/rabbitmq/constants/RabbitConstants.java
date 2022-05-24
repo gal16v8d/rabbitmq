@@ -25,5 +25,4 @@ public final class RabbitConstants {
   public static final int RECOVERY_CHECK = 60000;
 
   public static final int PACKAGES_TO_SEND = 200;
-
 }

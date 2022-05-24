@@ -1,9 +1,9 @@
 package com.gsdd.rabbitmq.basic;
 
+import com.gsdd.rabbitmq.constants.RabbitConstants;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.concurrent.TimeoutException;
-import com.gsdd.rabbitmq.constants.RabbitConstants;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j

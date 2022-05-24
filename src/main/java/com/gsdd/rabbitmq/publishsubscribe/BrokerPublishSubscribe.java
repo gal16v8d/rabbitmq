@@ -1,11 +1,11 @@
 package com.gsdd.rabbitmq.publishsubscribe;
 
-import java.io.IOException;
-import java.util.concurrent.TimeoutException;
 import com.gsdd.rabbitmq.AbstractBrokerConfig;
 import com.gsdd.rabbitmq.DestinationType;
 import com.gsdd.rabbitmq.MessageProcessor;
 import com.gsdd.rabbitmq.constants.RabbitConstants;
+import java.io.IOException;
+import java.util.concurrent.TimeoutException;
 
 public final class BrokerPublishSubscribe extends AbstractBrokerConfig {
 

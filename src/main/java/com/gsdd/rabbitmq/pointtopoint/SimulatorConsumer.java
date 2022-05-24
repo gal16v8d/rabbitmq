@@ -14,5 +14,4 @@ public class SimulatorConsumer {
       log.error("Error: {}", e.getMessage(), e);
     }
   }
-
 }

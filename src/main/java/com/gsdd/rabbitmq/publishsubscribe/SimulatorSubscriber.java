@@ -14,5 +14,4 @@ public class SimulatorSubscriber {
       log.error("Error {}", e.getMessage(), e);
     }
   }
-
 }

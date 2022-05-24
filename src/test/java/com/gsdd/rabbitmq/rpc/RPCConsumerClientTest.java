@@ -1,5 +1,8 @@
 package com.gsdd.rabbitmq.rpc;
 
+import com.rabbitmq.client.AMQP;
+import com.rabbitmq.client.Channel;
+import com.rabbitmq.client.Envelope;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.concurrent.BlockingQueue;
@@ -9,9 +12,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import com.rabbitmq.client.AMQP;
-import com.rabbitmq.client.Channel;
-import com.rabbitmq.client.Envelope;
 
 @ExtendWith(MockitoExtension.class)
 class RPCConsumerClientTest {
@@ -20,12 +20,9 @@ class RPCConsumerClientTest {
   private static final String TEST = "test";
   private static final String MSG = "msg";
 
-  @Mock
-  private Channel c;
-  @Mock
-  private Envelope e;
-  @Mock
-  private BlockingQueue<String> response;
+  @Mock private Channel c;
+  @Mock private Envelope e;
+  @Mock private BlockingQueue<String> response;
   private RPCConsumerClient client;
 
   @BeforeEach

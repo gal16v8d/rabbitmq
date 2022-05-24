@@ -1,9 +1,9 @@
 package com.gsdd.rabbitmq.rpc;
 
-import java.io.IOException;
-import java.util.concurrent.TimeoutException;
 import com.gsdd.rabbitmq.RabbitManager;
 import com.gsdd.rabbitmq.constants.RabbitConstants;
+import java.io.IOException;
+import java.util.concurrent.TimeoutException;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j

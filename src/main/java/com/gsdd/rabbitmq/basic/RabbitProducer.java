@@ -1,11 +1,11 @@
 package com.gsdd.rabbitmq.basic;
 
+import com.gsdd.rabbitmq.RabbitManager;
+import com.gsdd.rabbitmq.constants.RabbitConstants;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.concurrent.TimeoutException;
-import org.apache.commons.lang.SerializationUtils;
-import com.gsdd.rabbitmq.RabbitManager;
-import com.gsdd.rabbitmq.constants.RabbitConstants;
+import org.apache.commons.lang3.SerializationUtils;
 
 public class RabbitProducer extends RabbitManager {
 
@@ -14,7 +14,11 @@ public class RabbitProducer extends RabbitManager {
   }
 
   public void sendMessage(Serializable object) throws IOException {
-    channel.basicPublish(RabbitConstants.EXCHANGE, endPointName, null,
-        SerializationUtils.serialize(object));
+    getChannel()
+        .basicPublish(
+            RabbitConstants.EXCHANGE,
+            getEndPointName(),
+            null,
+            SerializationUtils.serialize(object));
   }
 }

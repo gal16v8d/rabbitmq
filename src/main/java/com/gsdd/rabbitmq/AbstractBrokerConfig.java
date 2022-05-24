@@ -1,13 +1,13 @@
 package com.gsdd.rabbitmq;
 
-import java.io.IOException;
-import java.util.concurrent.TimeoutException;
-import org.apache.commons.io.IOUtils;
 import com.gsdd.rabbitmq.constants.RabbitConstants;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
+import java.io.IOException;
+import java.util.concurrent.TimeoutException;
 import lombok.Getter;
+import org.apache.commons.io.IOUtils;
 
 @Getter
 public abstract class AbstractBrokerConfig {
@@ -49,5 +49,4 @@ public abstract class AbstractBrokerConfig {
     }
     IOUtils.closeQuietly(connection);
   }
-
 }
