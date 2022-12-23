@@ -41,13 +41,13 @@
 		<checkstyle.version>10.1</checkstyle.version>
 
 		<lombok.version>1.18.24</lombok.version>
-		<junit.version>5.9.0</junit.version>
-		<mockito.version>4.7.0</mockito.version>
+		<junit.version>5.9.1</junit.version>
+		<mockito.version>4.10.0</mockito.version>
 		<!-- Logger api -->
 		<slf4j.version>1.7.36</slf4j.version>
 		<!-- Logger impl -->
-		<log4j.version>2.18.0</log4j.version>
-		<rabbit.amqp.version>4.4.1</rabbit.amqp.version>
+		<log4j.version>2.19.0</log4j.version>
+		<rabbit.amqp.version>5.16.0</rabbit.amqp.version>
 		<commons.io.version>2.11.0</commons.io.version>
 		<commons.lang.version>3.12.0</commons.lang.version>
 		<docker-config-util.version>2.0.1</docker-config-util.version>

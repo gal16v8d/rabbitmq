@@ -7,11 +7,11 @@ import com.gsdd.rabbitmq.constants.RabbitConstants;
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
 
-public final class BrokerPTP extends AbstractBrokerConfig {
+public final class BrokerPtp extends AbstractBrokerConfig {
 
-  private static BrokerPTP instance;
+  private static BrokerPtp instance;
 
-  private BrokerPTP(String host) throws IOException, TimeoutException {
+  private BrokerPtp(String host) throws IOException, TimeoutException {
     super(host, DestinationType.QUEUE);
   }
 
@@ -32,9 +32,9 @@ public final class BrokerPTP extends AbstractBrokerConfig {
     getChannel().basicConsume(getDestinationType().getValue(), false, procesador);
   }
 
-  public static synchronized BrokerPTP getIntance() throws IOException, TimeoutException {
+  public static synchronized BrokerPtp getIntance() throws IOException, TimeoutException {
     if (instance == null) {
-      instance = new BrokerPTP(RabbitConstants.HOST);
+      instance = new BrokerPtp(RabbitConstants.HOST);
     }
     return instance;
   }

@@ -3,6 +3,7 @@ package com.gsdd.rabbitmq.basic;
 import com.gsdd.rabbitmq.constants.RabbitConstants;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeoutException;
 import lombok.extern.slf4j.Slf4j;
 
@@ -28,9 +29,9 @@ public class RabbitLauncher {
     producer = new RabbitProducer(RabbitConstants.COMMON_QUEUE);
 
     for (int i = 0; i < RabbitConstants.PACKAGES_TO_SEND; i++) {
-      HashMap<String, Integer> message = new HashMap<>();
+      Map<String, Integer> message = new HashMap<>();
       message.put(RabbitConstants.MSJ_KEY, i);
-      producer.sendMessage(message);
+      producer.sendMessage((HashMap<String, Integer>) message);
       log.info("Mensaje # {} enviado.", i);
     }
   }
