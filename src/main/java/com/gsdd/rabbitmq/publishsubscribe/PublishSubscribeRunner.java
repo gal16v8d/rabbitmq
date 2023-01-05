@@ -7,13 +7,13 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class PublishSubscribeRunner {
-  
+
   public static void main(String[] args) throws IOException, TimeoutException {
     BrokerPublishSubscribe broker = BrokerPublishSubscribe.getIntance();
     initSubscriber(broker);
     initPublisher(broker);
     try {
-      // Delay for avoid to close the connection 
+      // Delay for avoid to close the connection
       // before consumer ends its process
       Thread.sleep(45000);
       broker.closeConnections();
@@ -21,7 +21,7 @@ public class PublishSubscribeRunner {
       Thread.currentThread().interrupt();
     }
   }
-  
+
   private static void initSubscriber(BrokerPublishSubscribe broker) {
     try {
       broker.receiveMessage();
@@ -29,7 +29,7 @@ public class PublishSubscribeRunner {
       log.error("Error {}", e.getMessage(), e);
     }
   }
-  
+
   private static void initPublisher(BrokerPublishSubscribe broker) {
     for (int i = 0; i < RabbitConstants.PACKAGES_TO_SEND; i++) {
       sendMessage(broker, i);
@@ -43,5 +43,4 @@ public class PublishSubscribeRunner {
       log.error("Error {}", e.getMessage(), e);
     }
   }
-
 }
