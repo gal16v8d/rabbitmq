@@ -24,7 +24,7 @@
 		<!-- If true skips IT test execution -->
 		<skip.integration.tests>false</skip.integration.tests>
 
-		<rabbit.amqp.version>5.17.0</rabbit.amqp.version>
+		<rabbit.amqp.version>5.19.0</rabbit.amqp.version>
 		<commons.io.version>2.13.0</commons.io.version>
 		<commons.lang.version>3.12.0</commons.lang.version>
 		<docker-config-util.version>2.0.4</docker-config-util.version>
