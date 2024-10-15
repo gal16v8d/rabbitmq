@@ -7,7 +7,7 @@ import java.util.concurrent.TimeoutException;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class RabbitRPCServerLauncher {
+public class RabbitRpcServerLauncher {
 
   public static void main(String[] argv) {
     RabbitManager rm = null;
@@ -16,7 +16,7 @@ public class RabbitRPCServerLauncher {
       rm.getChannel().basicQos(1);
 
       log.info(" [x] Awaiting RPC requests");
-      RPCConsumerServer consumer = new RPCConsumerServer(rm.getChannel());
+      RpcConsumerServer consumer = new RpcConsumerServer(rm.getChannel());
       rm.getChannel().basicConsume(RabbitConstants.RPC_SEND_QUEUE, consumer);
       // Wait and be prepared to consume the message from RPC client.
       waitMessages(consumer);
@@ -29,7 +29,7 @@ public class RabbitRPCServerLauncher {
     }
   }
 
-  private static void waitMessages(RPCConsumerServer consumer) {
+  private static void waitMessages(RpcConsumerServer consumer) {
     while (true) {
       synchronized (consumer) {
         try {

@@ -12,7 +12,7 @@ import org.apache.commons.io.IOUtils;
 @Getter
 public abstract class AbstractBrokerConfig {
 
-  private ConnectionFactory factory = new ConnectionFactory();
+  private final ConnectionFactory factory = new ConnectionFactory();
   private Connection connection;
   private Channel channel;
   private DestinationType destinationType;

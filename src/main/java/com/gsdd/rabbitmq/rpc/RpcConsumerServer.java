@@ -11,11 +11,11 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Getter
-public class RPCConsumerServer extends DefaultConsumer {
+public class RpcConsumerServer extends DefaultConsumer {
 
-  private Channel channel;
+  private final Channel channel;
 
-  public RPCConsumerServer(Channel channel) {
+  public RpcConsumerServer(Channel channel) {
     super(channel);
     this.channel = channel;
   }
@@ -36,7 +36,7 @@ public class RPCConsumerServer extends DefaultConsumer {
       log.info(" [.] fib({})", message);
       response += fib(n);
     } catch (RuntimeException e) {
-      log.error(" [.] {}", e);
+      log.error(" [.] ", e);
     } finally {
       channel.basicPublish(
           "", properties.getReplyTo(), replyProps, response.getBytes(StandardCharsets.UTF_8));

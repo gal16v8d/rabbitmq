@@ -28,11 +28,11 @@ public final class BrokerPtp extends AbstractBrokerConfig {
   @Override
   public void receiveMessage() throws IOException {
     getChannel().basicQos(1);
-    MessageProcessor procesador = new MessageProcessor(getChannel());
-    getChannel().basicConsume(getDestinationType().getValue(), false, procesador);
+    MessageProcessor processor = new MessageProcessor(getChannel());
+    getChannel().basicConsume(getDestinationType().getValue(), false, processor);
   }
 
-  public static synchronized BrokerPtp getIntance() throws IOException, TimeoutException {
+  public static synchronized BrokerPtp getInstance() throws IOException, TimeoutException {
     if (instance == null) {
       instance = new BrokerPtp(RabbitConstants.HOST);
     }

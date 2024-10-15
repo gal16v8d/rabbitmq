@@ -6,11 +6,11 @@ import java.util.concurrent.TimeoutException;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class RabbitRPCClientLauncher {
+public class RabbitRpcClientLauncher {
 
   public static void main(String[] argv) {
     try {
-      String response = null;
+      String response;
       for (int i = 0; i < RabbitConstants.PACKAGES_TO_SEND; i++) {
         log.info(" [x] Requesting fib({})", i);
         response = sendMessages(String.valueOf(i), String.valueOf(i));
@@ -26,9 +26,9 @@ public class RabbitRPCClientLauncher {
 
   private static String sendMessages(String corrId, String msj)
       throws IOException, InterruptedException, TimeoutException {
-    RPCClient fibonacciRpc = null;
+    RpcClient fibonacciRpc = null;
     try {
-      fibonacciRpc = new RPCClient();
+      fibonacciRpc = new RpcClient();
       return fibonacciRpc.call(msj, corrId);
     } finally {
       if (fibonacciRpc != null && fibonacciRpc.getManager() != null) {

@@ -1,10 +1,9 @@
 package com.gsdd.rabbitmq.constants;
 
 import com.gsdd.docker.config.util.DockerEnvLoader;
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
+import lombok.experimental.UtilityClass;
 
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@UtilityClass
 public final class RabbitConstants {
 
   public static final String COMMON_QUEUE = "common";

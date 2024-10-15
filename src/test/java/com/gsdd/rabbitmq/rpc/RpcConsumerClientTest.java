@@ -14,7 +14,7 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
-class RPCConsumerClientTest {
+class RpcConsumerClientTest {
 
   private static final String EMPTY = "";
   private static final String TEST = "test";
@@ -23,11 +23,11 @@ class RPCConsumerClientTest {
   @Mock private Channel c;
   @Mock private Envelope e;
   @Mock private BlockingQueue<String> response;
-  private RPCConsumerClient client;
+  private RpcConsumerClient client;
 
   @BeforeEach
   void setUp() {
-    client = new RPCConsumerClient(c, TEST, response);
+    client = new RpcConsumerClient(c, TEST, response);
   }
 
   @Test

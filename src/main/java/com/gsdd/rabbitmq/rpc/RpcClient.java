@@ -11,12 +11,12 @@ import java.util.concurrent.TimeoutException;
 import lombok.Getter;
 
 @Getter
-public class RPCClient {
+public class RpcClient {
 
-  private RabbitManager manager;
-  private String replyQueueName;
+  private final RabbitManager manager;
+  private final String replyQueueName;
 
-  public RPCClient() throws IOException, TimeoutException {
+  public RpcClient() throws IOException, TimeoutException {
     manager = new RabbitManager(RabbitConstants.RPC_SEND_QUEUE);
     replyQueueName =
         manager
@@ -35,7 +35,7 @@ public class RPCClient {
     manager
         .getChannel()
         .basicConsume(
-            replyQueueName, true, new RPCConsumerClient(manager.getChannel(), corrId, response));
+            replyQueueName, true, new RpcConsumerClient(manager.getChannel(), corrId, response));
 
     manager
         .getChannel()

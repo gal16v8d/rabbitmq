@@ -12,7 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class MessageProcessor extends DefaultConsumer {
 
-  private Channel channel;
+  private final Channel channel;
 
   public MessageProcessor(Channel channel) {
     super(channel);
@@ -23,7 +23,7 @@ public class MessageProcessor extends DefaultConsumer {
   public void handleDelivery(
       String consumerTag, Envelope envelop, BasicProperties basicProp, byte[] body)
       throws IOException {
-    String message = "";
+    String message;
     try {
       message = new String(body, StandardCharsets.UTF_8);
       log.info("[x] Message received '{}'", message);

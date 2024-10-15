@@ -10,12 +10,12 @@ import java.util.concurrent.BlockingQueue;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class RPCConsumerClient extends DefaultConsumer {
+public class RpcConsumerClient extends DefaultConsumer {
 
-  private String corrId;
-  private BlockingQueue<String> response;
+  private final String corrId;
+  private final BlockingQueue<String> response;
 
-  public RPCConsumerClient(Channel channel, String corrId, BlockingQueue<String> response) {
+  public RpcConsumerClient(Channel channel, String corrId, BlockingQueue<String> response) {
     super(channel);
     this.corrId = corrId;
     this.response = response;

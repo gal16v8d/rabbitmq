@@ -33,8 +33,8 @@ public final class BrokerPublishSubscribe extends AbstractBrokerConfig {
     String queueName2 = getChannel().queueDeclare().getQueue();
     getChannel().queueBind(queueName2, getDestinationType().getValue(), "");
 
-    MessageProcessor procesador = new MessageProcessor(getChannel());
-    getChannel().basicConsume(queueName, false, procesador);
+    MessageProcessor processor = new MessageProcessor(getChannel());
+    getChannel().basicConsume(queueName, false, processor);
   }
 
   public static synchronized BrokerPublishSubscribe getIntance()

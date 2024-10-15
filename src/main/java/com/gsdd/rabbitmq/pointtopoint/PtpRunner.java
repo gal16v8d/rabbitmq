@@ -9,7 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 public class PtpRunner {
 
   public static void main(String[] args) throws IOException, TimeoutException {
-    BrokerPtp ptp = BrokerPtp.getIntance();
+    BrokerPtp ptp = BrokerPtp.getInstance();
     initConsumer(ptp);
     initProducer(ptp);
     try {
