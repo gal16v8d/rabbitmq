@@ -37,7 +37,7 @@ public final class BrokerPublishSubscribe extends AbstractBrokerConfig {
     getChannel().basicConsume(queueName, false, processor);
   }
 
-  public static synchronized BrokerPublishSubscribe getIntance()
+  public static synchronized BrokerPublishSubscribe getInstance()
       throws IOException, TimeoutException {
     if (instance == null) {
       instance = new BrokerPublishSubscribe(RabbitConstants.HOST);

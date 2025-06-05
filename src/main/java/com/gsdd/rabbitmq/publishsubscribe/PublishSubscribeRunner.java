@@ -9,7 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 public class PublishSubscribeRunner {
 
   public static void main(String[] args) throws IOException, TimeoutException {
-    BrokerPublishSubscribe broker = BrokerPublishSubscribe.getIntance();
+    BrokerPublishSubscribe broker = BrokerPublishSubscribe.getInstance();
     initSubscriber(broker);
     initPublisher(broker);
     try {

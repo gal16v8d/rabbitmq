@@ -2,13 +2,12 @@ package com.gsdd.rabbitmq.basic;
 
 import com.gsdd.rabbitmq.RabbitManager;
 import com.gsdd.rabbitmq.constants.RabbitConstants;
+import com.gsdd.rabbitmq.models.MessageRecord;
 import com.rabbitmq.client.AMQP.BasicProperties;
 import com.rabbitmq.client.Consumer;
 import com.rabbitmq.client.Envelope;
 import com.rabbitmq.client.ShutdownSignalException;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.concurrent.TimeoutException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.SerializationUtils;
@@ -38,11 +37,9 @@ public class RabbitConsumer extends RabbitManager implements Runnable, Consumer 
 
   /** Called when new message is available. */
   @Override
-  @SuppressWarnings("unchecked")
-  public void handleDelivery(String consumerTag, Envelope env, BasicProperties props, byte[] body)
-      throws IOException {
-    Map<String, Integer> map = (HashMap<String, Integer>) SerializationUtils.deserialize(body);
-    log.info("Mensaje # {} recibido.", map.get(RabbitConstants.MSJ_KEY));
+  public void handleDelivery(String consumerTag, Envelope env, BasicProperties props, byte[] body) {
+    MessageRecord message = SerializationUtils.deserialize(body);
+    log.info("Message # {} received.", message.messageNumber());
   }
 
   @Override

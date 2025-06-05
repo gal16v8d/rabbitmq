@@ -3,7 +3,6 @@ package com.gsdd.rabbitmq.rpc;
 import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Envelope;
-import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.concurrent.BlockingQueue;
 import org.junit.jupiter.api.BeforeEach;
@@ -31,7 +30,7 @@ class RpcConsumerClientTest {
   }
 
   @Test
-  void handleDeliveryGoodCorrIdTest() throws IOException {
+  void handleDeliveryGoodCorrIdTest() {
     AMQP.BasicProperties properties =
         new AMQP.BasicProperties.Builder().correlationId(TEST).build();
     byte[] body = MSG.getBytes();
@@ -40,7 +39,7 @@ class RpcConsumerClientTest {
   }
 
   @Test
-  void handleDeliveryBadCorrIdTest() throws IOException {
+  void handleDeliveryBadCorrIdTest() {
     AMQP.BasicProperties properties =
         new AMQP.BasicProperties.Builder().correlationId("test2").build();
     byte[] body = MSG.getBytes();

@@ -4,7 +4,7 @@ Basic sample of RabbitMQ usage.
 
 For the sample you will need:
 
-* Java 17
+* Java 21
 * Maven
 * Docker
 

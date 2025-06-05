@@ -2,15 +2,15 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	
+
 	<parent>
 		<groupId>com.gsdd</groupId>
 		<artifactId>gsdd-parent</artifactId>
-		<version>1.0.4</version>
+		<version>1.0.5</version>
 	</parent>
 
 	<artifactId>rabbitmq</artifactId>
-	<version>2.1.1</version>
+	<version>2.1.2</version>
 	<packaging>jar</packaging>
 
 	<name>rabbitmq</name>
@@ -24,10 +24,10 @@
 		<!-- If true skips IT test execution -->
 		<skip.integration.tests>false</skip.integration.tests>
 
-		<rabbit.amqp.version>5.22.0</rabbit.amqp.version>
-		<commons.io.version>2.17.0</commons.io.version>
+		<rabbit.amqp.version>5.25.0</rabbit.amqp.version>
+		<commons.io.version>2.19.0</commons.io.version>
 		<commons.lang.version>3.17.0</commons.lang.version>
-		<docker-config-util.version>2.1.1</docker-config-util.version>
+		<docker-config-util.version>2.1.2</docker-config-util.version>
 	</properties>
 
 	<dependencies>
@@ -230,7 +230,7 @@
 					<!-- define a language-specific format -->
 					<java>
 						<googleJavaFormat>
-							<version>1.15.0</version>
+							<version>1.21.0</version>
 							<reflowLongStrings>true</reflowLongStrings>
 						</googleJavaFormat>
 						<trimTrailingWhitespace />

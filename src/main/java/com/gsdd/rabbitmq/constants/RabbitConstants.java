@@ -11,7 +11,6 @@ public final class RabbitConstants {
   public static final String RPC_RESPONSE_QUEUE = "responseRPC";
 
   public static final String NOT_IMPLEMENTED = "Not implemented yet";
-  public static final String MSJ_KEY = "newMsg";
 
   public static final String EXCHANGE = "";
 

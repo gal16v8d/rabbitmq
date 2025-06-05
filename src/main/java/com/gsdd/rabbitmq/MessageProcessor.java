@@ -30,6 +30,9 @@ public class MessageProcessor extends DefaultConsumer {
       Thread.sleep(RabbitConstants.WAIT_TIME);
     } catch (Exception e) {
       log.error(e.getMessage(), e);
+      if (e instanceof InterruptedException) {
+        Thread.currentThread().interrupt();
+      }
     } finally {
       log.info("[x] Done ");
       channel.basicAck(envelop.getDeliveryTag(), false);
